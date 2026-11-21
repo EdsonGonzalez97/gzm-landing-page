@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "nextjs-ts-shadcn-template",
+  title: { default: "GZM", template: "%s | GZM" },
   description: "Blank Next.js + TypeScript + Tailwind + shadcn/ui starter",
 };
 
@@ -36,7 +37,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Navbar />
+          <main className="flex flex-1 flex-col">{children}</main>
         </ThemeProvider>
       </body>
     </html>
